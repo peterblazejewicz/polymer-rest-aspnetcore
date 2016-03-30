@@ -2,12 +2,14 @@ using System.Collections.Generic;
 using Microsoft.AspNet.Mvc;
 using PolymerApp.API.Models;
 using GenFu;
+using Microsoft.AspNet.Cors;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace PolymerApp.API.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("LocalhostPolicy")]
     public class UsersController : Controller
     {
         // GET: api/users

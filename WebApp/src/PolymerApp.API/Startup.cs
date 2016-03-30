@@ -23,6 +23,15 @@ namespace PolymerApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddCors(options =>
+                options.AddPolicy("LocalhostPolicy",
+                    builder => builder.WithOrigins(
+                            "http://localhost:5000",
+                            "http://localhost:5001",
+                            "http://localhost:3000")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials()));
             services.AddMvc();
         }
 
