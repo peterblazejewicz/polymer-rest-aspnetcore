@@ -146,6 +146,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
     </paper-toast>
 
+    <iron-ajax
+      auto
+      url="http://localhost:5000/api/users/"
+      handle-as="json"
+      lastReponse="{{users}}"
+     ></iron-ajax>
   </template>
 
   <!-- build:js scripts/app.js -->
