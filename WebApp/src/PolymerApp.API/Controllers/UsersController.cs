@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNet.Mvc;
 using PolymerApp.API.Models;
+using GenFu;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,17 +14,16 @@ namespace PolymerApp.API.Controllers
         [HttpGet]
         public IEnumerable<User> Get()
         {
-            return new List<User>(){
-                new User(),
-                new User()
-            };
+            var users = A.ListOf<User>();
+            return users;
         }
 
         // GET api/users/username
         [HttpGet("{username}")]
         public User Get(string username)
         {
-            return new User();
+            var user = A.New<User>();
+            return user;
         }
 
     }
