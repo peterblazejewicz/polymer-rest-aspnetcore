@@ -14,6 +14,9 @@ namespace PolymerApp.API.Controllers
         [HttpGet]
         public IEnumerable<User> Get()
         {
+            A.Configure<User>()
+                .Fill(u => u.Email)
+                .AsEmailAddressForDomain("example.com");
             var users = A.ListOf<User>();
             return users;
         }
@@ -22,6 +25,9 @@ namespace PolymerApp.API.Controllers
         [HttpGet("{username}")]
         public User Get(string username)
         {
+            A.Configure<User>()
+                .Fill(u => u.Usermame, () => username)
+                .Fill(u => u.Email, () => $"{username}@example.com");
             var user = A.New<User>();
             return user;
         }
