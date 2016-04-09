@@ -1,4 +1,6 @@
 {
+  "name": "web-app",
+  "version": "1.0.0",
   "private": true,
   "devDependencies": {
     "browser-sync": "^2.7.7",
@@ -33,6 +35,6 @@
     "start": "gulp serve"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4.0.*"
   }
 }
