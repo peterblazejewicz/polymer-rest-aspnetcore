@@ -35,6 +35,12 @@ namespace WebApp
 
             app.UseIISPlatformHandler();
 
+            // static default file configuration is being overriden
+            // to serve only single default page
+            DefaultFilesOptions options = new DefaultFilesOptions();
+            options.DefaultFileNames.Clear();
+            options.DefaultFileNames.Add("index.html");
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseMvc();
