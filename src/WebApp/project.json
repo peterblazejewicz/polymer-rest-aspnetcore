@@ -35,5 +35,14 @@
   "publishExclude": [
     "**.user",
     "**.vspscc"
-  ]
+  ],
+  "scripts": {
+    "postrestore": [
+      "npm install",
+      "bower install"
+    ],
+    "postbuild": [
+      "gulp"
+    ]
+  }
 }
