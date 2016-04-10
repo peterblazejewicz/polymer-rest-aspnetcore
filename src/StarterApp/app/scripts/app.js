@@ -22,6 +22,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     // set app.baseURL to '/your-pathname/' if running from folder in production
     // app.baseUrl = '/polymer-starter-kit/';
   }
+  /// Sets api default base URL
+  app.apiBaseUrl = 'http://localhost:5000/';
+  if(window.location.port === '') {
+    app.apiBaseUrl = '/';
+  }
 
   app.displayInstalledToast = function() {
     // Check to make sure caching is actually enabled—it won't be in the dev environment.

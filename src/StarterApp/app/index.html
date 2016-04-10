@@ -119,11 +119,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
             <section data-route="home">
               <paper-material elevation="1">
-                <my-greeting></my-greeting>
-
-                <p class="subhead">You now have:</p>
-                <my-list></my-list>
-
                 <p>Looking for more Web App layouts? Check out our <a href="https://github.com/PolymerElements/app-layout-templates">layouts</a> collection. You can also <a href="http://polymerelements.github.io/app-layout-templates/">preview</a> them live.</p>
               </paper-material>
 
@@ -133,17 +128,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <paper-material elevation="1">
                 <h2 class="page-title">Users</h2>
                 <p>This is the users section</p>
-                <a href$="{{baseUrl}}users/Addy">Addy</a><br>
-                <a href$="{{baseUrl}}users/Rob">Rob</a><br>
-                <a href$="{{baseUrl}}users/Chuck">Chuck</a><br>
-                <a href$="{{baseUrl}}users/Sam">Sam</a>
+                <template is="dom-repeat" items="{{usersData}}">
+                  <a href$="{{baseUrl}}users/{{item.Id}}">{{item.FirstName}} {{item.LastName}}</a><br>
+                </template>
               </paper-material>
             </section>
 
             <section data-route="user-info">
               <paper-material elevation="1">
-                <h2 class="page-title">User: {{params.name}}</h2>
-                <div>This is {{params.name}}'s section</div>
+                <h2 class="page-title">User: {{userData.FirstName}} {{userData.LastName}}</h2>
+                <p>This is {{userData.FirstName}}'s section</p>
+                <dl>
+                  <dt>First name:</dt>
+                  <dd>{{userData.FirstName}}</dd>
+                  <dt>Last name:</dt>
+                  <dd>{{userData.LastName}}</dd>
+                  <dt>Full name:</dt>
+                  <dd>{{userData.FullName}}</dd>
+                  <dt>Full name:</dt>
+                  <dd>{{userData.FullName}}</dd>
+                  <dt>Email:</dt>
+                  <dd>{{userData.Email}}</dd>
+                  <dt>Id:</dt>
+                  <dd>{{userData.Id}}</dd>
+                  <dt>Username:</dt>
+                  <dd>{{userData.Username}}</dd>
+                </dl>
               </paper-material>
             </section>
 
@@ -161,6 +171,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <paper-toast id="toast">
       <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
     </paper-toast>
+    <!-- data integration -->
+    <iron-ajax
+      id="getAllUsersData"
+      url="{{apiBaseUrl}}api/user/"
+      handle-as="json"
+      debounce-duration="300"
+      last-response="{{usersData}}"></iron-ajax>>
+
+      <iron-ajax
+      id="getUserData"
+      url="{{apiBaseUrl}}api/user/{{params.id}}"
+      handle-as="json"
+      debounce-duration="300"
+      last-response="{{userData}}"></iron-ajax>>
 
     <!-- Uncomment next block to enable Service Worker support (1/2) -->
     <!--
