@@ -1,23 +1,40 @@
 # polymer-rest-aspnetcore
 
-Bits of CORS, REST and Polymer
+Web application (`single page application`) built wiht ASP.NET Core WebAPI,
+static web pages and set of web components from Polymer library. 
 
-## WebAPI project
+## Development
 
 ```
-cd WebApp/src/PolymerApp.API
+cd src/StarterApp
+```
+- install dependencies
+```
 dnu restore
-dnx web
 ```
+The `restore` script will also install `NPM` and `Bower` dependencies used in client application.
 
-## Polymer client
-
+- to develop C# part:
 ```
-cd WebApp/src/PolymerApp.Web
-npm install
-bower install
+dnx-watch web
+```
+This will start web api endpoint.
+
+- to develop Polymer client app at the same time:
+```
 gulp serve
 ```
+This will start Node web server that will host development version of client app
+
+- to create `dist` version of client application you can:
+```
+dnu build
+```
+or just:
+```
+gulp
+```
+
 
 ## Author
 @peterblazejewicz
