@@ -4,6 +4,7 @@ using Microsoft.AspNet.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using StarterApp.Models;
 
 namespace StarterApp
 {
@@ -24,7 +25,15 @@ namespace StarterApp
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            // Add framework services.
+            services.AddCors(options =>
+                options.AddPolicy("LocalhostPolicy",
+                    builder => builder.WithOrigins("*")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials()));
             services.AddMvc();
+            services.AddSingleton<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
