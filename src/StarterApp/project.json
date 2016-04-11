@@ -19,7 +19,7 @@
     "Microsoft.AspNet.Cors": "6.0.0-rc1-final"
   },
   "commands": {
-    "web": "Microsoft.AspNet.Server.Kestrel"
+    "web": "Microsoft.AspNet.Server.Kestrel --server.urls http://127.0.0.1"
   },
   "frameworks": {
     "dnx451": {},
